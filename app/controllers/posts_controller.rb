@@ -21,6 +21,8 @@ class PostsController < ApplicationController
     else
       render 'posts/new'
     end
+    @comments = @post.comments.all
+    render :'post/show'
   end
 
   def update
@@ -37,4 +39,6 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:author, :body, :title, :subreddit)
     end
+  end
+
 end
