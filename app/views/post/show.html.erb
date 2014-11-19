@@ -1,7 +1,0 @@
-<h1> Post Show <h1>
-<h2><%=@post.title%></h2>
-<p><%=@post.body%></p>
-<hr>
-<% @post.comments.each do |comment| %>
-<p><%= comment.body %> - <%= comment.author.username %> - <%= comment.author.cohort %></p>
-<% end %>

@@ -13,6 +13,11 @@ class PostsController < ApplicationController
     render 'posts/new'
   end
 
+  def new
+    @post = Post.new
+    render 'post/new'
+  end
+
   def create
     @post = Post.new(post_params)
     puts "======================================"
@@ -22,7 +27,6 @@ class PostsController < ApplicationController
       render 'posts/new'
     end
     @comments = @post.comments.all
-    render :'post/show'
   end
 
   def update
@@ -39,6 +43,4 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:author, :body, :title, :subreddit)
     end
-  end
-
 end
