@@ -1,0 +1,6 @@
+hello world
+<ul>
+<%@subscriptions.each do |subscription|%>
+  <li><%= link_to subscription.subreddits.name, subreddit_path %></li>
+</ul>
+<% end %>
