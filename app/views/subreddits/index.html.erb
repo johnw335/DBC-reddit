@@ -1,0 +1,7 @@
+<h1>Subreddits</h1>
+
+<ul>
+<%@subreddits.each do |subreddit|%>
+  <li><%= link_to subreddit.name, subreddit%></li>
+  <%end%>
+</ul>
