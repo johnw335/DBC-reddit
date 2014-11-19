@@ -13,11 +13,6 @@ class PostsController < ApplicationController
     render 'posts/new'
   end
 
-  def new
-    @post = Post.new
-    render 'post/new'
-  end
-
   def create
     @post = Post.new(post_params)
     puts "======================================"
