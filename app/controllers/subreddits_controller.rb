@@ -7,6 +7,5 @@ class SubredditsController < ApplicationController
     @subreddit = Subreddit.find(params[:id])
 
     @posts = @subreddit.posts
-    # this page displays all the posts for @subredditt
   end
 end
