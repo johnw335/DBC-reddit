@@ -1,0 +1,8 @@
+<h1><%=@subreddit.name%></h1>
+
+
+<ul>
+<%@subreddit.each do |post|%>
+  <li><%= link_to post.title, post%></li>
+  <%end%>
+</ul>
