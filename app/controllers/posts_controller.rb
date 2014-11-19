@@ -5,12 +5,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    render :'post/show'
+    render :'posts/show'
   end
 
   def new
     @post = Post.new
-    render 'post/new'
+    render 'posts/new'
   end
 
   def create
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to subreddit_post_path(@post.subreddit, @post)
     else
-      render 'post/new'
+      render 'posts/new'
     end
   end
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     subreddit = @post.subreddit
     @post.destroy
-    redirect_to subreddit_path(subreddit)
+    redirect_to subreddits_path(subreddit)
   end
 
   private
