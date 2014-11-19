@@ -1,10 +1,11 @@
-class Post < ActiveRecord::Migration
+class CreatePosts < ActiveRecord::Migration
   def change
-    create_table Post do |t|
+    create_table :posts do |t|
       t.string :title
       t.string :body
       t.belongs_to :user
       t.belongs_to :subreddit
+      t.timestamps
     end
   end
 end
