@@ -1,0 +1,10 @@
+<%= form_for :post, :url => subreddit_posts_path(@post) do |f| %>
+  <br>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :body%>
+  <%= f.text_field :body%>
+  <br>
+  <%=f.submit%>
+<% end %>
