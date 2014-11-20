@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :users
+  resources :votes
   resources :sessions
   resources :subscription
   resources :subreddits do
