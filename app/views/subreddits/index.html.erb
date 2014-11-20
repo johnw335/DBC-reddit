@@ -1,8 +1,11 @@
-<h1><%=@subreddit.name%></h1>
-
+<h1>Subreddits</h1>
 
 <ul>
-<%@subreddit.each do |post|%>
-  <li><%= link_to post.title, post%></li>
+<%@subreddits.each do |subreddit|%>
+  <li><%= link_to subreddit.name, subreddit%></li>
   <%end%>
 </ul>
+
+<p>
+  <%= link_to "Add New Subreddit", new_subreddit_path %>
+</p>
