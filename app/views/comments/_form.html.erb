@@ -1,0 +1,7 @@
+<%= form_for @comment, :url => comments_path(@comment) do |f| %>
+  <br>
+  <%= f.label :body%>
+  <%= f.text_field :body%>
+  <br>
+  <%=f.submit%>
+<% end %>

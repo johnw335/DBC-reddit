@@ -2,6 +2,7 @@
 <h2><%=@post.title%></h2>
 <p><%=@post.body%></p>
 <hr>
+<%= link_to 'Leave a comment', new_subreddit_post_comment_path(post_id: params[:id]) %>
 <% @post.comments.each do |comment| %>
 <p><%= comment.body %> - <%= comment.author.username %> - <%= comment.author.cohort %></p>
 <% end %>
