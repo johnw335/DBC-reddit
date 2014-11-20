@@ -1,0 +1,12 @@
+<h1>Make a new Subreddit</h1>
+
+<%= form_for :subreddit, url: subreddits_path do |f| %>
+  <br>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :description%>
+  <%= f.text_field :description%>
+  <br>
+  <%=f.submit%>
+<% end %>
