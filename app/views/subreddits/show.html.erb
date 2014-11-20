@@ -1,7 +1,30 @@
 <h1>Subreddit: <%=@subreddit.name%></h1>
 
+<h3> Description </h3>
+<p>
+  <%=@subreddit.description%>
+</p>
+
+<h3> Posts </h3>
 <ul>
 <%@posts.each do |post|%>
   <li><%=link_to post.title, subreddit_post_path(@subreddit, post)%></li>
 <%end%>
 </ul>
+
+<p>
+  <%= link_to "Add new post", new_subreddit_post_path(@subreddit) %>
+</p>
+
+<p>
+  <%= link_to "Edit Subreddit Info", edit_subreddit_path(@subreddit) %>
+</p>
+
+<p>
+  <%= link_to 'Delete this Subreddit', subreddit_path(@subreddit), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+
+
+<p>
+  <%= link_to "Back", subreddits_path %>
+</p>
