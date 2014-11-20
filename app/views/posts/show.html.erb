@@ -1,12 +1,15 @@
-<h1> Post Show <h1>
-<h2><%=@post.title%></h2>
-<p><%=@post.body%></p>
-<hr>
+<h1> Post Show </h1>
+  <h2><%=@post.title%></h2>
+    <p><%=@post.body%></p>
+  <hr>
+
 <%= link_to 'Leave a comment', new_subreddit_post_comment_path(post_id: params[:id]) %>
-<% @post.comments.each do |comment| %>
-<p><%= comment.body %> - <%= comment.author.username %> - <%= comment.author.cohort %></p>
-<% end %>
-<hr>
+  <% @post.comments.each do |comment| %>
+  <p><%= comment.body %> - <%= comment.author.username %> - <%= comment.author.cohort %> -  - <%= link_to 'Delete', subreddit_post_comment_path(post_id: params[:id], id: comment.id), :method => :delete %>
+  </p>
+  <% end %>
+  <hr>
 <%= link_to 'Edit', subreddit_post_path(params[:subreddit_id], @post.id), :method => :put %>
 <%= link_to 'Delete', subreddit_post_path(params[:subreddit_id], @post.id), :confirm => "Are you sure you want to delete this post?", :method => :delete %>
 <%= link_to 'Back', subreddit_path(params[:subreddit_id]) %>
+

@@ -15,9 +15,15 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    post = @comment.post
+    @comment.destroy
+    redirect_to subreddit_post_path(post.subreddit_id, post.id)
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    render 'edit'
   end
 
   private

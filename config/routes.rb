@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :subscription
   resources :subreddits do
     resources :posts do
-      resources :comments, only: [:destroy, :new, :create]
+      resources :comments, only: [:destroy, :new, :create, :update]
     end
   end
 
