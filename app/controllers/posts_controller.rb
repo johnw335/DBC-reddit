@@ -11,12 +11,12 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @subreddit = Subreddit.find(params[:subreddit_id])
-    render 'posts/new'
   end
 
   def create
+    @subreddit =Subreddit.find(params[:subreddit_id])
     @post = Post.new(post_params)
-    puts "======================================"
+    @post.subreddit = @subreddit
     if @post.save
       redirect_to subreddit_post_path(params[:subreddit_id], @post)
     else
@@ -27,7 +27,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    render 'posts/edit'
   end
 
   def destroy
