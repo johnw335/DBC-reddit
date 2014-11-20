@@ -2,8 +2,6 @@
 
 <ul>
 <%@posts.each do |post|%>
-
   <li><%=link_to post.title, subreddit_post_path(@subreddit, post)%></li>
-
-  <%end%>
+<%end%>
 </ul>

@@ -1,5 +1,6 @@
 class SubredditsController < ApplicationController
   def index
+<<<<<<< HEAD
     @subreddits = Subreddit.all
   end
 
@@ -7,6 +8,8 @@ class SubredditsController < ApplicationController
     @subreddit = Subreddit.find(params[:id])
 
     @posts = @subreddit.posts
-    # this page displays all the posts for @subredditt
+=======
+    @subreddit = Subreddit.find(params[:subreddit_id])
+>>>>>>> added delete, improved show
   end
 end

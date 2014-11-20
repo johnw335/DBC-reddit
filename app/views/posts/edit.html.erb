@@ -1,0 +1,3 @@
+<h1>Edit post</h1>
+<%= render partial: "form", locals: {post: @post} %>
+<%= link_to 'Back', subreddit_path(params[:subreddit_id])%>
