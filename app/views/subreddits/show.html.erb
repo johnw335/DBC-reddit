@@ -3,7 +3,7 @@
 <ul>
 <%@posts.each do |post|%>
 
-  <li><%=link_to post.title, subreddit_posts_path(@subreddit)%></li>
+  <li><%=link_to post.title, subreddit_post_path(@subreddit, post)%></li>
 
   <%end%>
 </ul>
