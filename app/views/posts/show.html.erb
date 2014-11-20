@@ -10,9 +10,9 @@
   <% end %>
   <hr>
 
-<%= link_to 'Edit', subreddit_post_path(params[:subreddit_id], @post.id), :method => :put %>
+<%= link_to 'Edit Post', subreddit_post_path(params[:subreddit_id], @post.id), :method => :put %>
 <br>
-<%= link_to 'Delete', subreddit_post_path(params[:subreddit_id], @post.id), :confirm => "Are you sure you want to delete this post?", :method => :delete %>
+<%= link_to 'Delete Post', subreddit_post_path(params[:subreddit_id], @post.id), :confirm => "Are you sure you want to delete this post?", :method => :delete %>
 <br>
 <%= link_to 'Back', subreddit_path(params[:subreddit_id]) %>
 <br>
