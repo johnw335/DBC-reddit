@@ -3,4 +3,13 @@ class Post < ActiveRecord::Base
   belongs_to :subreddit
   has_many :votes
   has_many :comments
+
+  #Counts the total net votes
+  def net_votes
+    votes = self.votes
+    up_votes = votes.where(up: true).count
+    down_votes = votes.where(up: false).count
+    up_votes - down_votes
+  end
+
 end
