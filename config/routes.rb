@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :subscription
+  resources :comments, only: [:destroy, :new, :create]
   resources :subreddits do
     resources :posts
   end
