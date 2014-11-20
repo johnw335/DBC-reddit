@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :sessions
   resources :subscription
   resources :subreddits do
-    resources :posts
+    resources :posts do
+      resources :comments, only: [:destroy, :new, :create, :update]
+    end
   end
 
   root 'welcome#index'
