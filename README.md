@@ -16,6 +16,9 @@ Step 5) Open up your favorite browser and go to [local host](http://localhost:30
 ###Trello Board
 [Trello Site](https://trello.com/b/OHTeN4sL/dbc-reddit-app)
 
+###Heroku Link
+[Heroku Link](https://frozen-headland-3206.herokuapp.com/subreddits)
+
 ###Schema Design
 ![Schema Design](schema.png)
 
