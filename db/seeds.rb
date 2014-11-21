@@ -61,4 +61,4 @@ Post.create!(title: "Should I force push everything to master?",
                                   voter: User.all.sample,
                                   up: [true, true, false].sample)}
 
-10.times{Subscription.create(user: User.all.sample, subreddit: Subreddit.all.sample)}
+100.times{Subscription.create(user: User.all.sample, subreddit: Subreddit.all.sample)}
