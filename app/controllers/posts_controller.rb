@@ -3,6 +3,12 @@ class PostsController < ApplicationController
 
   end
 
+  def search
+    @search_results = Post.search(params[:search])
+    @subreddits = Subreddit.all
+    render 'subreddits/index'
+  end
+
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new

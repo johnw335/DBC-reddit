@@ -12,4 +12,10 @@ class Post < ActiveRecord::Base
     up_votes - down_votes
   end
 
+  def self.search(search)
+    if search
+      where(body: "%#{search}%")
+    end
+  end
+
 end

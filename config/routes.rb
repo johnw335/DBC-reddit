@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   # get '/logout' => 'sesssions#destroy'
   delete '/logout' => 'sessions#destroy', :via => :delete
 
+  post '/search' => 'posts#search'
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
