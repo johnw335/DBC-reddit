@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20141119211046) do
     t.integer  "user_id"
     t.integer  "post_id"
     t.integer  "comment_id"
+    t.integer  "points",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141119211046) do
     t.string   "body"
     t.integer  "user_id"
     t.integer  "subreddit_id"
+    t.integer  "points",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

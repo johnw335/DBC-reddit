@@ -6,7 +6,7 @@ class SubredditsController < ApplicationController
 
   def show
     @subreddit = Subreddit.find(params[:id])
-    @posts = @subreddit.posts
+    @posts = @subreddit.posts.order('points DESC')
   end
 
   def new

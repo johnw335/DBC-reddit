@@ -8,16 +8,12 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     @comment.post = Post.find(params[:post_id])
-    if comment_params[:comment_id]
-      puts "I MADE IT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    if comment_params[:comment_id] != ""
       @comment.comment_id = comment_params[:comment_id]
       @comment.post = nil
     end
-    @comment.author = User.find(1)
-    parent_comment = @comment
-    while parent_comment.post == nil
-      parent_comment = Comment.find(parent_comment.comment_id)
-    end
+    @comment.author = User.find(session[:user_id])
+    parent_comment =  @comment.post == nil ? get_parent_comment(@comment) : @comment
     if @comment.save
       redirect_to subreddit_post_path(parent_comment.post.subreddit, parent_comment.post)
     else

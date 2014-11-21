@@ -5,7 +5,7 @@
 
 <%= link_to 'Leave a comment', new_subreddit_post_comment_path(post_id: params[:id]) %>
 <ul>
-  <% @post.comments.each do |comment| %>
+  <% @comments.each do |comment| %>
     <%=render partial: "comments/show", locals: {comment: comment}%>
   <% end %>
   </ul>
@@ -22,5 +22,5 @@
 <%= link_to 'Down Vote', votes_path(post_id: @post.id, up: false), :method => :post %>
 
 <p>
-  Vote count: <%=@post.net_votes%>
+  Vote count: <%=@post.points%>
 </p>
