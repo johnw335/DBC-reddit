@@ -1,0 +1,15 @@
+<h1> Sign up </h1>
+<%= form_for :user, url: users_path do |f| %>
+<%= flash[:error] %>
+<br>
+
+<%= f.label :email %><br>
+<%= f.text_field :email %><br>
+<%= f.label :username %><br>
+<%= f.text_field :username %><br>
+<%= f.label :cohort %><br>
+<%= f.text_field :cohort %><br>
+<%= f.label :password %><br>
+<%= f.text_field :password %><br>
+<%= f.submit %>
+<% end %>

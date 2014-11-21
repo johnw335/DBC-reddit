@@ -3,7 +3,7 @@ require 'faker'
 10.times{User.create!(email: Faker::Internet.email,
                       username: Faker::Name.name,
                       cohort: "Apricots 2015",
-                      password_hash: "asdlkf;j`2349hjwef")}
+                      password: "password")}
 
 5.times{Subreddit.create!(name: Faker::Hacker.noun,
                           moderator: User.all.sample,
