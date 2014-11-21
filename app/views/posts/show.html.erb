@@ -2,8 +2,20 @@
   <h2><%=@post.title%></h2>
     <p><%=@post.body%></p>
   <hr>
-
+<div class="new-comment">
 <%= link_to 'Leave a comment', new_subreddit_post_comment_path(post_id: params[:id]) %>
+</div>
+<div id="new-comment-form" hidden>
+<%= form_for [@subreddit, @post,  @comment] do |f| %>
+  <br>
+  <%= f.label :body%>
+  <%= f.text_field :body%>
+  <%= f.hidden_field :comment_id, :value => params[:comment_id] %>
+  <br>
+  <%=f.submit%>
+<% end %>
+</div>
+
 <ul>
   <% @comments.each do |comment| %>
     <%=render partial: "comments/show", locals: {comment: comment}%>
