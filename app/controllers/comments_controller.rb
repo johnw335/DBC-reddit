@@ -1,15 +1,6 @@
 class CommentsController < ApplicationController
   def new
     @comment = Comment.new
-    respond_to do |format|
-      format.json {
-        render json: {
-          html: render(partial: "form", locals: {comment: @comment})
-        }
-      }
-
-      format.html{ render :new }
-    end
   end
 
   def create
