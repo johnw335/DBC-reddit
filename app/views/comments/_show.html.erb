@@ -1,7 +1,7 @@
-      <li><%=comment.net_votes%> - <%= comment.body %> - <%= comment.author.username %> - <%= comment.author.cohort %> - <%= link_to 'Up Vote', votes_path(comment_id: comment.id, up: true) , :method => :post %> - <%= link_to 'Down Vote', votes_path(comment_id: comment.id, up: false), :method => :post %>-<%= link_to 'Delete', subreddit_post_comment_path(post_id: params[:id], id: comment.id), :method => :delete %>
+      <li><%=comment.points%> - <%= comment.body %> - <%= comment.author.username %> - <%= comment.author.cohort %> - <%= link_to 'Up Vote', votes_path(comment_id: comment.id, up: true) , :method => :post %> - <%= link_to 'Down Vote', votes_path(comment_id: comment.id, up: false), :method => :post %>-<%= link_to 'Delete', subreddit_post_comment_path(post_id: params[:id], id: comment.id), :method => :delete %>
         <%= link_to 'Leave a reply', new_subreddit_post_comment_path(post_id: params[:id], comment_id: comment.id) %>
         <ul>
-            <%comment.replies.each do |comment|%>
+            <%comment.replies.order('points DESC').each do |comment|%>
               <%=render partial: "comments/show", locals: {comment: comment}%>
             <%end%>
         </ul>

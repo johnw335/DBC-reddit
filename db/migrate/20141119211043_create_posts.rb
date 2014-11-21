@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :body
       t.belongs_to :user
       t.belongs_to :subreddit
+      t.integer :points, default: 0
       t.timestamps
     end
   end

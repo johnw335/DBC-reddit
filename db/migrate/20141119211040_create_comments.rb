@@ -5,6 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.belongs_to :user
       t.belongs_to :post
       t.belongs_to :comment
+      t.integer :points, default: 0
       t.timestamps
     end
   end
