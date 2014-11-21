@@ -19,43 +19,51 @@ end
 
 feature "User visits a subreddit" do
   before do
-    Subreddit.create!(name: "yellow", description: "blue")
-    Post.create!(title: "colors", body: "let's talk about them", author: User.create(email: "emily.owaki@gmail.com",cohort: "wolves"), subreddit: Subreddit.find(1))
-    Comment.create!(body: "I think colors are stupid", author: User.find(1), post: Post.find(1))
+    @user = User.create!(email: "emily.owaki@gmail.com", cohort: "wolves", password: "catscats")
+    @subreddit = Subreddit.create!(name: "yellow", moderator: @user, description: "blue")
+    @post = Post.create!(title: "colors", body: "let's talk about them",
+                 author: @user,
+                 subreddit: @subreddit)
+    @comment = Comment.create!(body: "I think colors are stupid", author: @user, post: @post)
   end
 
   scenario "sees a list of posts and can view them" do
-    visit '/subreddits/1'
+    visit subreddit_path(@subreddit)
     expect(page).to have_text("color")
   end
 
   scenario "user can visit a post on a subreddit" do
-    visit '/subreddits/1'
+    visit subreddit_path(@subreddit)
     click_on "colors"
     expect(page).to have_text("let's talk about them")
   end
 
   scenario "user can view a comment" do
-    visit '/subreddits/1/posts/1'
+    visit subreddit_post_path(@subreddit, @post)
     expect(page).to have_text("I think colors are stupid")
   end
 end
 
 feature "User can leave feedback on a post" do
   before do
-    Subreddit.create!(name: "yellow", description: "blue")
-    Post.create!(title: "colors", body: "let's talk about them", author: User.create(email: "emily.owaki@gmail.com",cohort: "wolves"), subreddit: Subreddit.find(1))
-    Comment.create!(body: "I think colors are stupid", author: User.find(1), post: Post.find(1))
+    @user = User.create!(email: "emily.owaki@gmail.com", cohort: "wolves", password: "catscats")
+    @subreddit = Subreddit.create!(name: "yellow", moderator: @user, description: "blue")
+    @post = Post.create!(title: "colors", body: "let's talk about them",
+                 author: @user,
+                 subreddit: @subreddit)
+    @comment = Comment.create!(body: "I think colors are stupid", author: @user, post: @post)
   end
 
   scenario "User can view the comment form" do
-    visit '/subreddits/1/posts/1'
+    visit subreddit_post_path(@subreddit, @post)
     click_on "Leave a comment"
     expect(page).to have_text("Body")
   end
 
   scenario "User can leave a comment" do
-    visit '/subreddits/1/posts/1/comments/new'
+    ###this test should pass after the bug is fixed
+    visit new_subreddit_post_comment_path(@subreddit, @post)
+    # visit '/subreddits/1/posts/1/comments/new'
     fill_in 'Body', :with => 'Cats?'
     click_on 'Create Comment'
     expect(page).to have_text('Cats?')
@@ -70,8 +78,8 @@ feature "User can leave feedback on a post" do
   # end
 
   scenario "User can upvote a post" do
-    visit '/subreddits/1/posts/1'
-    click_on 'Up Vote'
+    visit subreddit_post_path(@subreddit, @post)
+    first('Up Vote').click
     expect(page).to have_text("1")
   end
 
