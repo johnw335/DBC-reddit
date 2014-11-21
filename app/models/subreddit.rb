@@ -8,8 +8,6 @@ class Subreddit < ActiveRecord::Base
   # validates :name, uniqueness: true
   # validates :moderator, presence: true
 
-
-
   #will return an array of the user objects who subscribe to a subreddit
   def followers_of_subreddit
     followers_of_sub = []

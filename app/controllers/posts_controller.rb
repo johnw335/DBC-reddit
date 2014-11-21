@@ -3,6 +3,10 @@ class PostsController < ApplicationController
 
   end
 
+  def search
+    @posts = Post.search(params[:search])
+  end
+
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
