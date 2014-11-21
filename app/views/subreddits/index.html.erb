@@ -1,10 +1,29 @@
-<h1>Subreddits</h1>
+<div id= "subreddit_list">
+  <ul>
 
-<ul>
-<%@subreddits.each do |subreddit|%>
-  <li><%= link_to subreddit.name, subreddit%></li>
-  <%end%>
-</ul>
+    <%@subreddits.each do |subreddit|%>
+    <div class="subreddit_name">
+      <li><%= link_to subreddit.name.upcase, subreddit%> </li>
+    </div>
+      <%end%>
+
+  </ul>
+</div>
+
+<div id="header_bar">
+  <div id="logo_header"><%= image_tag "redditalien.png" %></div>
+  <div id="logo_text"> <h1>DBC reddit</h1></div>
+</div>
+
+<div id="login_form">
+
+  <%= form_tag users_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search],:size => 45, :placeholder => "search"  %>
+  <% end %>
+
+
+    <%= render partial: "shared/login" %>
+</div>
 
 <p>
   <%= link_to "Add New Subreddit", new_subreddit_path %>
@@ -14,5 +33,6 @@
 
   <%= link_to "Logout", logout_path, method: :delete, data: { confirm: 'Are you sure?' } if session[:user_id] %>
 </p>
+
 
 

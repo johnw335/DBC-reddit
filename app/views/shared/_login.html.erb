@@ -1,0 +1,10 @@
+<!-- Login -->
+<%= form_for :session, url: login_path do |f| %>
+  <%= flash[:error] %>
+
+
+<%= f.text_field :email, :placeholder => "email" %>
+<%= f.text_field :password, :placeholder => "password" %>
+<br>
+<%= f.submit 'Login' %>
+<%end%>
