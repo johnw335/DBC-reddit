@@ -14,8 +14,9 @@ class VotesController < ApplicationController
       redirect_to subreddit_post_path(@subreddit, @post)
     elsif @comment
       @vote = Vote.create(comment: @comment, up: params[:up])
-      @comment.voter = current_user
+      @vote.voter = current_user
       @post = @comment.post
+      @subreddit = @post.subreddit
 
       redirect_to subreddit_post_path(@subreddit, @post)
     end
