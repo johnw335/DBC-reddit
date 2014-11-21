@@ -2,6 +2,7 @@
   <br>
   <%= f.label :body%>
   <%= f.text_field :body%>
+  <%= f.hidden_field :comment_id, :value => params[:comment_id] %>
   <br>
   <%=f.submit%>
 <% end %>

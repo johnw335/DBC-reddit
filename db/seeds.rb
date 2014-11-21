@@ -48,9 +48,16 @@ Post.create!(title: "Should I force push everything to master?",
             author: User.all.sample,
             subreddit: git)
 
-(rand(25..50)).times {Comment.create(post: Post.all.sample,
+# top level comments
+(rand(75..100)).times {Comment.create(post: Post.all.sample,
                                     author: User.all.sample,
                                     body: Faker::Lorem.paragraph(1))}
+
+# nested comments (replies)
+(rand(100..125)).times {Comment.create!(comment_id: Comment.all.sample.id,
+                                    author: User.all.sample,
+                                    body: Faker::Lorem.paragraph(1))}
+
 # Votes on posts
 (rand(50..100)).times {Vote.create(post: Post.all.sample,
                                   voter: User.all.sample,
