@@ -6,18 +6,20 @@ class VotesController < ApplicationController
       @post = Post.find(params[:post_id])
     end
 
+    # if the vote is on a post do this:
     if @post
       @vote = Vote.create(post: @post, up: params[:up])
       @vote.voter = current_user
       @subreddit = @post.subreddit
-
       @post.update(points: @post.net_votes)
 
       if params[:outside_post] == "true"
-        redirect_to subreddit_path(@subreddit)
+        # redirect_to subreddit_path(@subreddit)
+        redirect_to root_path
       else
         redirect_to subreddit_post_path(@subreddit, @post)
       end
+    # if the vote is on a comment do this:
     elsif @comment
       @vote = Vote.create(comment: @comment, up: params[:up])
       @vote.voter = current_user

@@ -20,9 +20,7 @@
   <%= form_tag users_path, :method => 'get' do %>
       <%= text_field_tag :search, params[:search],:size => 45, :placeholder => "search"  %>
   <% end %>
-
-
-    <%= render partial: "shared/login" %>
+<%= render partial: "shared/login" %>
 </div>
 
 <%= link_to "Login", login_path if session[:user_id] == nil %> <br>
@@ -33,6 +31,6 @@
   <%= link_to "Add New Subreddit", new_subreddit_path %>
 </p>
 
-
+<%= render partial: "shared/posts" %>
 
 

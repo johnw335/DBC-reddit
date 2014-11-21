@@ -1,0 +1,19 @@
+
+
+<h3> Posts </h3>
+<ol>
+<% @posts = Post.all.order("points DESC") %>
+
+
+<% @posts.each do |post|%>
+  <% @subreddit = post.subreddit %>
+
+  <li>
+    <%= post.points %>
+    <%=link_to 'Up Vote', votes_path(post_id: post.id, up: true, outside_post: true) , :method => :post %> -
+    <%= link_to 'Down Vote', votes_path(post_id: post.id, up: false, outside_post: true), :method => :post %> -
+    <%=link_to post.title, subreddit_post_path(@subreddit, post)%>
+  </li>
+<%end%>
+</ol>
+
