@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['title LIKE ? OR body LIKE ?', "%#{search}%", "%#{search}%"])
+      where(body: "%#{search}%")
     end
   end
 

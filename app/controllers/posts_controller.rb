@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:search])
+    @search_results = Post.search(params[:search])
+    @subreddits = Subreddit.all
+    render 'subreddits/index'
   end
 
   def show
