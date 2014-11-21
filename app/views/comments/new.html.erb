@@ -1,7 +1,3 @@
-<%= form_for @comment, :url => subreddit_post_comments_path(params[:subreddit_id], params[:post_id], @comment) do |f| %>
-  <br>
-  <%= f.label :body%>
-  <%= f.text_field :body%>
-  <br>
-  <%=f.submit%>
-<% end %>
+<%= render partial: "form", locals: {comment: @comment} %>
+
+

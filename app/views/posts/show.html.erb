@@ -4,10 +4,11 @@
   <hr>
 
 <%= link_to 'Leave a comment', new_subreddit_post_comment_path(post_id: params[:id]) %>
+<ul>
   <% @post.comments.each do |comment| %>
-  <p><%=comment.net_votes%> - <%= comment.body %> - <%= comment.author.username %> - <%= comment.author.cohort %> - <%= link_to 'Up Vote', votes_path(comment_id: comment.id, up: true) , :method => :post %> - <%= link_to 'Down Vote', votes_path(comment_id: comment.id, up: false), :method => :post %>-<%= link_to 'Delete', subreddit_post_comment_path(post_id: params[:id], id: comment.id), :method => :delete %>
-  </p>
+    <%=render partial: "comments/show", locals: {comment: comment}%>
   <% end %>
+  </ul>
   <hr>
 
 <%= link_to 'Edit Post', subreddit_post_path(params[:subreddit_id], @post.id), :method => :put %>

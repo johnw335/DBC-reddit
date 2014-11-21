@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20141119211046) do
     t.string   "body"
     t.integer  "user_id"
     t.integer  "post_id"
+    t.integer  "comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
