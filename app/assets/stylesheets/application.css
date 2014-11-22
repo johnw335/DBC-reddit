@@ -98,20 +98,32 @@ li{
   width: 80%;
 }
 
+
 #container a{
   text-decoration: none;
 }
-/*.arrows-number{
-  float: left;
-}
-*/
-.arrows-number{
 
-}
 .arrows-number img{
   display: block;
+  margin-left: -8px;
 }
 
+.arrow-post-show{
+  float: left;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+
+.arrow-post-show img{
+  display: block;
+  margin-left: -8px;
+}
+
+.post-container{
+  /*border: 1px black solid;*/
+  margin-left: 40px;
+  position: relative;
+}
 
 .actual-post{
   padding: 15px;
