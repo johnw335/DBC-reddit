@@ -98,9 +98,12 @@ li{
   width: 80%;
 }
 
-
 #container a{
   text-decoration: none;
+}
+
+.arrows-number{
+  color:#B7B7B7;
 }
 
 .arrows-number img{
@@ -124,6 +127,7 @@ li{
   display: block;
   font-family: verdana;
   font-size: .8em;
+  margin-top: 10px;
   margin-bottom: -20px;
 
 }
@@ -145,7 +149,8 @@ li{
   padding-left: 20px;
   padding-top: -60px;
   position: relative;
-  padding-bottom: 5px;
+  margin-bottom: 10px;
+  /*padding-bottom: 80px;*/
 }
 .comment-cohort{
   color: #888;
@@ -163,5 +168,32 @@ li{
   padding: 15px;
   display: block;
 }
+
+.title-container-img{
+/*  position: relative;*/
+  margin-left: 25px;
+  margin-top: -80px;
+
+}
+.title-container-img a{
+  margin-bottom: 40px;
+  margin-top: 20px;
+  font-family: verdana;
+}
+.title-with-image{
+  margin-left: 150px;
+  float: left;
+  padding-top: 20px;
+  margin-bottom: -40px;
+}
+
+.title-container{
+  position: relative;
+  margin-left: 25px;
+  margin-top: -40px;
+  padding-bottom: 30px;
+  font-family: verdana;
+}
+
 
 

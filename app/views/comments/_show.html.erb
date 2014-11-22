@@ -1,12 +1,12 @@
 <li>
-  <span class="arrow-comment-show">
+  <div class="arrow-comment-show">
     <%= link_to image_tag("arrowUp.png"), votes_path(comment_id: comment.id, up: true), :method => :post %>
     <%= comment.points %>
 
     [-]<span class="comment-author"><%= comment.author.username %></span> - <span class="comment-cohort"><%= comment.author.cohort %></span>
 
     <%= link_to image_tag("arrowDown.png"), votes_path(comment_id: comment.id, up: false), :method => :post %>
-  </span>
+  </div>
     <span class="comment-body"><%= comment.body %></span>
     <ul>
       <% comment.replies.order('points DESC').each do |comment| %>
