@@ -2,7 +2,9 @@
 <%= render "shared/vote_error" %>
 
 <p>
+  <% if session[:user_id]%>
   <%= link_to "Add New Subreddit", new_subreddit_path %>
+  <% end %>
 </p>
 
 <% unless @results.nil? %>

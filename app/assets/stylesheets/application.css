@@ -103,22 +103,12 @@ li{
 }
 
 .arrows-number{
-/*  margin-bottom: -40px;*/
+  color:#B7B7B7;
 }
 
 .arrows-number img{
   display: block;
   margin-left: -8px;
-}
-
-.arrows-number-img img{
-  display: block;
-  margin-left: -8px;
-}
-
-.arrows-number-img {
-  background-color: red;
-  padding-bottom: -40px;
 }
 
 .arrow-post-show{
@@ -137,6 +127,7 @@ li{
   display: block;
   font-family: verdana;
   font-size: .8em;
+  margin-top: 10px;
   margin-bottom: -20px;
 
 }
@@ -158,7 +149,8 @@ li{
   padding-left: 20px;
   padding-top: -60px;
   position: relative;
-  padding-bottom: 5px;
+  margin-bottom: 10px;
+  /*padding-bottom: 80px;*/
 }
 .comment-cohort{
   color: #888;
@@ -186,6 +178,7 @@ li{
 .title-container-img a{
   margin-bottom: 40px;
   margin-top: 20px;
+  font-family: verdana;
 }
 .title-with-image{
   margin-left: 150px;
@@ -199,6 +192,7 @@ li{
   margin-left: 25px;
   margin-top: -40px;
   padding-bottom: 30px;
+  font-family: verdana;
 }
 
 
