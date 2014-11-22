@@ -1,4 +1,6 @@
 
+<%= render "shared/vote_error" %>
+
 <span class="arrow-post-show">
   <%= link_to image_tag("arrowUp.png"), votes_path(post_id: @post.id, up: true) , :method => :post %>
     <%=@post.points%>
