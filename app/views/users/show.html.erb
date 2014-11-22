@@ -1,4 +1,15 @@
 <h3><%=@user.username%></h3>
+<%@comment_karma = 0%>
+<%@user.comments.each do |comment|%>
+<%@comment_karma += comment.points%>
+<%end%>
+<%@link_karma = 0%>
+<%@user.posts.each do |post|%>
+<%@link_karma += post.points%>
+<%end%>
+
+<h2 id="comment_karma">Comment Karma: <%=@comment_karma%></h2>
+<h2 id="link_karma">Link Karma: <%=@link_karma%></h2>
 
 <h3> Posts </h3>
 <ul>
