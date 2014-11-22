@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :votes
   resources :sessions
-  resources :subscription
+  resources :subscriptions
   resources :subreddits do
     resources :posts do
       resources :comments, only: [:destroy, :new, :create, :update]
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', :via => :delete
 
   post '/search' => 'posts#search'
+
 
   root 'welcome#index'
 
