@@ -98,14 +98,27 @@ li{
   width: 80%;
 }
 
-
 #container a{
   text-decoration: none;
+}
+
+.arrows-number{
+/*  margin-bottom: -40px;*/
 }
 
 .arrows-number img{
   display: block;
   margin-left: -8px;
+}
+
+.arrows-number-img img{
+  display: block;
+  margin-left: -8px;
+}
+
+.arrows-number-img {
+  background-color: red;
+  padding-bottom: -40px;
 }
 
 .arrow-post-show{
@@ -163,5 +176,30 @@ li{
   padding: 15px;
   display: block;
 }
+
+.title-container-img{
+/*  position: relative;*/
+  margin-left: 25px;
+  margin-top: -80px;
+
+}
+.title-container-img a{
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+.title-with-image{
+  margin-left: 150px;
+  float: left;
+  padding-top: 20px;
+  margin-bottom: -40px;
+}
+
+.title-container{
+  position: relative;
+  margin-left: 25px;
+  margin-top: -40px;
+  padding-bottom: 30px;
+}
+
 
 
