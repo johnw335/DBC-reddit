@@ -1,9 +1,5 @@
 <!-- Renders a popup error if user tries to vote while not logged in. -->
-  <% if flash[:vote_error] %>
-    <script type="text/javascript">
-      alert("you must be signed in to vote");
-    </script>
-  <% end %>
+<%= render "shared/vote_error" %>
 
 <p>
   <%= link_to "Add New Subreddit", new_subreddit_path %>
