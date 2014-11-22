@@ -101,7 +101,21 @@ li{
 #container a{
   text-decoration: none;
 }
+/*.arrows-number{
+  float: left;
+}
+*/
+.arrows-number{
+
+}
+.arrows-number img{
+  display: block;
+}
+
 
 .actual-post{
   padding: 15px;
+  display: block;
 }
+
+
