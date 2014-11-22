@@ -12,18 +12,17 @@
 <%end%>
 </ul>
 
+
+<% if session[:user_id] == @subreddit.moderator.id %>
+  <%= link_to "Edit Subreddit Info", edit_subreddit_path(@subreddit) %>
+  <br>
+  <%= link_to 'Delete this Subreddit', subreddit_path(@subreddit), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
+<% end %>
+
 <p>
   <%= link_to "Add new post", new_subreddit_post_path(@subreddit) %>
 </p>
-
-<p>
-  <%= link_to "Edit Subreddit Info", edit_subreddit_path(@subreddit) %>
-</p>
-
-<p>
-  <%= link_to 'Delete this Subreddit', subreddit_path(@subreddit), method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
-
 
 <p>
   <%= link_to "Back", subreddits_path %>
