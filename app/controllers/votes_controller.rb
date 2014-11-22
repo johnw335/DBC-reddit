@@ -10,29 +10,30 @@ class VotesController < ApplicationController
     # if the user is not logged in when they vote, show error message.
     if current_user == nil
       flash[:vote_error] = true
-      redirect_to(:back)
 
     # if the vote is on a post do this:
     elsif @post
       @vote = Vote.create(post: @post, up: params[:up])
       @vote.voter = current_user
-      @subreddit = @post.subreddit
-      @post.update(points: @post.net_votes)
-      if params[:outside_post] == "true"
-        redirect_to subreddit_path(@subreddit)
-      else
-        redirect_to subreddit_post_path(@subreddit, @post)
+      # @subreddit = @post.subreddit
+      if @vote.save
+        @post.update(points: @post.points + 1)
       end
 
     # if the vote is on a comment do this:
     elsif @comment
-      @vote = Vote.create(comment: @comment, up: params[:up])
+      @vote = Vote.new(comment: @comment, up: params[:up])
       @vote.voter = current_user
-      @post = get_parent_comment(@comment).post
-      @subreddit = @post.subreddit
-      @comment.update(points: @comment.net_votes)
-      redirect_to subreddit_post_path(@subreddit, @post)
+      if @vote.save
+        @comment.update(points: @comment.points + 1)
+      end
+      # @post = get_parent_comment(@comment).post
+      # @subreddit = @post.subreddit
     end
+    redirect_to(:back)
+
+    # session[:return_to] ||= request.referer
+    # redirect_to session.delete(:return_to)
   end
 
 end

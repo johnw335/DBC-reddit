@@ -5,6 +5,11 @@ require 'faker'
                       cohort: "Apricots 2015",
                       password: "password")}
 
+dummy_user = User.create!(email: "email@email.com",
+                          username: "user1",
+                          cohort: "Wolves",
+                          password: "password")
+
 5.times{Subreddit.create!(name: Faker::Hacker.noun,
                           moderator: User.all.sample,
                           description: Faker::Lorem.sentence(5))}
@@ -25,12 +30,18 @@ gifs = Subreddit.create!(name: "Coding Gifs",
                         moderator: User.all.sample,
                         description: "Sometimes words just don't say enough.")
 
-(rand(20..30)).times { Post.create!(title: Faker::Lorem.words(4).join(" "),
+100.times{Subscription.create(user: User.all.sample,
+                              subreddit: Subreddit.all.sample)}
+
+20.times {Subscription.create(user: dummy_user,
+                              subreddit: Subreddit.all.sample)}
+
+(rand(20..30)).times { Post.create!(title: Faker::Hacker.say_something_smart,
                                     body: Faker::Lorem.paragraph(3),
                                     author: User.all.sample,
                                     subreddit: Subreddit.all.sample)}
 
-(rand(40..50)).times { Post.create!(title: Faker::Lorem.words(4).join(" "),
+(rand(40..50)).times { Post.create!(title: Faker::Hacker.say_something_smart,
                                     body: Faker::Lorem.paragraph(3),
                                     author: User.all.sample,
                                     subreddit: Subreddit.all.sample,
@@ -55,41 +66,33 @@ Post.create!(title: "Should I force push everything to master?",
             author: User.all.sample,
             subreddit: git)
 
+Post.all.each do |post|
+  post.points = rand(-300..2000)
+  post.save!
+end
+
 # top level comments
-(rand(75..100)).times {Comment.create!(post: Post.all.sample,
+(rand(150..200)).times {Comment.create!(post: Post.all.sample,
                                     author: User.all.sample,
                                     body: Faker::Lorem.paragraph(1))}
 
 # nested comments (replies)
-(rand(100..125)).times {Comment.create!(comment_id: Comment.all.sample.id,
+(rand(300..400)).times {Comment.create!(comment_id: Comment.all.sample.id,
                                     author: User.all.sample,
                                     body: Faker::Lorem.paragraph(1))}
 
-# Votes on posts
-(rand(150..250)).times {Vote.create!(post: Post.all.sample,
-                                  voter: User.all.sample,
-                                  up: [true, true, false].sample)}
-
-#Votes on comments
-(rand(500..600)).times{Vote.create!(comment: Comment.all.sample,
-                                  voter: User.all.sample,
-                                  up: [true, true, false].sample)}
-
-Post.all.each do |post|
-  post.points = post.net_votes
-  post.save!
-end
-
 Comment.all.each do |comment|
-  comment.points = comment.net_votes
+  comment.points = rand(-200..1000)
   comment.save!
 end
 
-100.times{Subscription.create(user: User.all.sample, subreddit: Subreddit.all.sample)}
+# Votes on posts
+(rand(50..100)).times {Vote.create!(post: Post.all.sample,
+                                  voter: User.all.sample,
+                                  up: [true, true, true, false].sample)}
 
-dummy_user = User.create!(email: "email@email.com",
-                          username: "user1",
-                          cohort: "Wolves",
-                          password: "password")
+#Votes on comments
+(rand(50..100)).times{Vote.create!(comment: Comment.all.sample,
+                                  voter: User.all.sample,
+                                  up: [true, true, true, false].sample)}
 
-20.times {Subscription.create!(user: dummy_user, subreddit: Subreddit.all.sample)}

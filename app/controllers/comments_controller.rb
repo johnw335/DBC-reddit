@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
     else
       # render 'comments/new'
     end
+    redirect_to(:back)
   end
 
   def destroy
