@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @subreddits = Subreddit.all
   end
 
   def create

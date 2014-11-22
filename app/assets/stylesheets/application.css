@@ -38,18 +38,20 @@ TO DO's
   display: inline-block;
   padding-left:3px;
   list-style-type: none;
+  font-family: verdana;
 }
 
 .subreddit_name a{
-  font-size: 12px;
+  font-size: .6em;
   text-decoration: none;
 }
 
 #login_form{
+  margin-top: -20px;
   float: right;
 }
 
-body h1{
+#logo_text h1{
   background-color: #CEE3F8;
   margin-top: 0;
   margin-bottom: 0;
@@ -70,4 +72,23 @@ body h1{
 
 #logo_text{
   display: inline-block;
+}
+
+#front a{
+  color: red;
+  font-weight: bold;
+}
+
+#user-box{
+  background-color:#EFF7FF;
+  color: #808087;
+  font-family: verdana;
+  font-size: .7em;
+  /*padding-bottom: 2px;*/
+  padding: 2px 25px 2px 2px;
+  border-top-left-radius: 5px;
+}
+
+li{
+  list-style-type: none;
 }
