@@ -28,8 +28,15 @@
 
 <div id="login_form">
 
-<span id="user-box">want to join? <%= link_to "login", login_path if session[:user_id] == nil %> or <%= link_to "register", new_user_path if session[:user_id] == nil %> in seconds</span><br>
-<%= link_to "Logout", logout_path, method: :delete, data: { confirm: 'Are you sure?' } if session[:user_id] %>
+<span id="user-box">
+  <% if session[:user_id] == nil %>
+  want to join? <%= link_to "login", login_path %> or <%= link_to "register", new_user_path %> in seconds
+  <% else %>
+    <% @user = User.find(session[:user_id]) %>
+    <strong><%= @user.username %></strong> | <%= @user.cohort %> | <%= link_to "Logout", logout_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%end%>
+</span>
+  <br>
   <%= form_tag :controller => 'posts', :action => 'search', :method => 'get' do %>
       <%= text_field_tag :search, params[:search], :id => 'search_field', :size => 46, :placeholder => "search"  %>
   <% end %>

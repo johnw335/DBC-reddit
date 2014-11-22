@@ -31,6 +31,7 @@ class PostsController < ApplicationController
     @subreddit =Subreddit.find(params[:subreddit_id])
     @post = Post.new(post_params)
     @post.subreddit = @subreddit
+    @post.author = User.find(session[:user_id])
     if @post.save
       redirect_to subreddit_post_path(params[:subreddit_id], @post)
     else

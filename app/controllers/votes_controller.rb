@@ -15,7 +15,7 @@ class VotesController < ApplicationController
 
       if params[:outside_post] == "true"
         # redirect_to subreddit_path(@subreddit)
-        redirect_to root_path
+        redirect_to subreddit_path(@subreddit)
       else
         redirect_to subreddit_post_path(@subreddit, @post)
       end
