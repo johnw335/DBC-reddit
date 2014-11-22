@@ -9,6 +9,10 @@ class Subreddit < ActiveRecord::Base
   # validates :moderator, presence: true
 
   #will return an array of the user objects who subscribe to a subreddit
+  def three_most_popular_posts
+    self.posts.order('points DESC').limit(3)
+  end
+
   def followers_of_subreddit
     followers_of_sub = []
     @subscriptions_to_sub = Subscription.where(subreddit: self)
