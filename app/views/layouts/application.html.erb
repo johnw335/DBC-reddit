@@ -7,6 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id= "subreddit_list">
+  <ul>
+    <li class="subreddit_name"><%= link_to 'MY SUBREDDITS', root_path %></li>
+    <li class="subreddit_name" id="front"><%= link_to 'FRONT', root_path %></li>
+    <% @subreddits_nav_bar = Subreddit.all %>
+    <%@subreddits_nav_bar.each do |subreddit|%>
+    <div class="subreddit_name">
+      <li><%= link_to subreddit.name.upcase, subreddit%> </li>
+    </div>
+      <%end%>
+
+  </ul>
+</div>
+
+<div id="header_bar">
+  <div id="logo_header"><%= image_tag "redditalien.png" %></div>
+  <div id="logo_text"> <h1>DBC reddit</h1></div>
+</div>
+
+<div id="login_form">
+
+<span id="user-box">want to join? <%= link_to "login", login_path if session[:user_id] == nil %> or <%= link_to "register", new_user_path if session[:user_id] == nil %> in seconds</span><br>
+<%= link_to "Logout", logout_path, method: :delete, data: { confirm: 'Are you sure?' } if session[:user_id] %>
+  <%= form_tag :controller => 'posts', :action => 'search', :method => 'get' do %>
+      <%= text_field_tag :search, params[:search], :id => 'search_field', :size => 46, :placeholder => "search"  %>
+  <% end %>
+<%= render partial: "shared/login" if session[:user_id] == nil %>
+</div>
+
 
 <%= yield %>
 
