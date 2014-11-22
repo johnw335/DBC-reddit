@@ -86,3 +86,10 @@ Comment.all.each do |comment|
 end
 
 100.times{Subscription.create(user: User.all.sample, subreddit: Subreddit.all.sample)}
+
+dummy_user = User.create!(email: "email@email.com",
+                          username: "user1",
+                          cohort: "Wolves",
+                          password: "password")
+
+20.times {Subscription.create!(user: dummy_user, subreddit: Subreddit.all.sample)}

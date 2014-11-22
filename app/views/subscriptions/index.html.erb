@@ -1,6 +1,32 @@
-hello world
-<ul>
-<%@subscriptions.each do |subscription|%>
-  <li><%= link_to subscription.subreddits.name, subreddit_path %></li>
-</ul>
+
+<p>
+  <%= link_to "Add New Subreddit", new_subreddit_path %>
+</p>
+
+<% unless @results.nil? %>
+  <h3>Search Results</h3>
+    <ul>
+      <% @results.each do |post| %>
+        <%= render partial: "shared/post", locals: { :post => post } %>
+      <% end %>
+    </ul>
+<% else %>
+
+<h3> Posts </h3>
+
+
+<%@posts = []%>
+<% @subscriptions.each do |subscription|%>
+  <%subscription.subreddit.three_most_popular_posts.each do |popular_post| %>
+    <% @posts << popular_post %>
+  <%end%>
+<%end%>
+
+<div id="container">
+  <ul>
+    <%@posts.sort! { |a,b| b.points <=> a.points }.each do |post|%>
+      <%= render partial: "shared/post", locals: { :post => post } %>
+    <%end%>
+  </ul>
+</div>
 <% end %>

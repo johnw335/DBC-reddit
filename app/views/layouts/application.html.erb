@@ -11,12 +11,18 @@
   <ul>
     <li class="subreddit_name"><%= link_to 'MY SUBREDDITS', root_path %></li>
     <li class="subreddit_name" id="front"><%= link_to 'FRONT', root_path %></li>
-    <% @subreddits_nav_bar = Subreddit.all %>
+    <%if session[:user_id] %>
+      <%@user = User.find(session[:user_id])%>
+      <%@subreddits_nav_bar = @user.subreddits%>
+    <%else%>
+      <% @subreddits_nav_bar = Subreddit.all %>
+    <%end%>
+
     <%@subreddits_nav_bar.each do |subreddit|%>
-    <div class="subreddit_name">
-      <li><%= link_to subreddit.name.upcase, subreddit%> </li>
-    </div>
-      <%end%>
+      <div class="subreddit_name">
+        <li><%= link_to subreddit.name.upcase, subreddit%> </li>
+      </div>
+    <%end%>
 
   </ul>
 </div>
