@@ -3,7 +3,7 @@
     <%= link_to image_tag("arrowUp.png"), votes_path(comment_id: comment.id, up: true), :method => :post %>
     <%= comment.points %>
 
-    [-]<span class="comment-author"><%= comment.author.username %></span> - <span class="comment-cohort"><%= comment.author.cohort %></span>
+    [-]<span class="comment-author"><%= link_to comment.author.username, user_path(user_id: comment.author.id ) %></span> - <span class="comment-cohort"><%= comment.author.cohort %></span>
 
     <%= link_to image_tag("arrowDown.png"), votes_path(comment_id: comment.id, up: false), :method => :post %>
   </div>
