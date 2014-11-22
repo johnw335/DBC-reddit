@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141119211046) do
     t.integer  "user_id"
     t.integer  "subreddit_id"
     t.integer  "points",       default: 0
+    t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

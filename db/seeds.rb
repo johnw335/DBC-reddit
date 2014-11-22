@@ -25,10 +25,16 @@ gifs = Subreddit.create!(name: "Coding Gifs",
                         moderator: User.all.sample,
                         description: "Sometimes words just don't say enough.")
 
-(rand(10..50)).times { Post.create!(title: Faker::Lorem.words(4).join(" "),
+(rand(20..30)).times { Post.create!(title: Faker::Lorem.words(4).join(" "),
                                     body: Faker::Lorem.paragraph(3),
                                     author: User.all.sample,
                                     subreddit: Subreddit.all.sample)}
+
+(rand(40..50)).times { Post.create!(title: Faker::Lorem.words(4).join(" "),
+                                    body: Faker::Lorem.paragraph(3),
+                                    author: User.all.sample,
+                                    subreddit: Subreddit.all.sample,
+                                    image_url: "http://lorempixel.com/140/103/")}
 
 
 Post.create!(title: "I hate rspec",
@@ -38,7 +44,8 @@ Post.create!(title: "I hate rspec",
 Post.create!(title: "cats playing piano",
             body:"<a href='http://giphy.com/search/keyboard-cat'>http://giphy.com/search/keyboard-cat</a>",
             author: User.all.sample,
-            subreddit: gifs)
+            subreddit: gifs,
+            image_url: "http://giphy.com/search/keyboard-cat'>http://giphy.com/search/keyboard-cat")
 Post.create!(title: "What is a pirate's favorite test?",
             body:"ARspec",
             author: User.all.sample,
@@ -49,7 +56,7 @@ Post.create!(title: "Should I force push everything to master?",
             subreddit: git)
 
 # top level comments
-(rand(75..100)).times {Comment.create(post: Post.all.sample,
+(rand(75..100)).times {Comment.create!(post: Post.all.sample,
                                     author: User.all.sample,
                                     body: Faker::Lorem.paragraph(1))}
 
@@ -59,13 +66,23 @@ Post.create!(title: "Should I force push everything to master?",
                                     body: Faker::Lorem.paragraph(1))}
 
 # Votes on posts
-(rand(50..100)).times {Vote.create(post: Post.all.sample,
+(rand(150..250)).times {Vote.create!(post: Post.all.sample,
                                   voter: User.all.sample,
                                   up: [true, true, false].sample)}
 
 #Votes on comments
-(rand(50..100)).times{Vote.create(comment: Comment.all.sample,
+(rand(500..600)).times{Vote.create!(comment: Comment.all.sample,
                                   voter: User.all.sample,
                                   up: [true, true, false].sample)}
+
+Post.all.each do |post|
+  post.points = post.net_votes
+  post.save!
+end
+
+Comment.all.each do |comment|
+  comment.points = comment.net_votes
+  comment.save!
+end
 
 100.times{Subscription.create(user: User.all.sample, subreddit: Subreddit.all.sample)}

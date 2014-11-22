@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.belongs_to :user
       t.belongs_to :subreddit
       t.integer :points, default: 0
+      t.string  :image_url
       t.timestamps
     end
   end
