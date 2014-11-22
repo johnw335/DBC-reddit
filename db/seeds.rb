@@ -96,3 +96,5 @@ end
                                   voter: User.all.sample,
                                   up: [true, true, true, false].sample)}
 
+
+20.times {Subscription.create(user: dummy_user, subreddit: Subreddit.all.sample)}
