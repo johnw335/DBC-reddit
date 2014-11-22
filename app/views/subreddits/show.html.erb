@@ -7,10 +7,19 @@
 
 <h3> Posts </h3>
 <ul>
-<%@posts.each do |post|%>
-  <li><%= post.points %> - <%=link_to post.title, subreddit_post_path(@subreddit, post)%> - <%= link_to 'Up Vote', votes_path(post_id: post.id, up: true, outside_post: true) , :method => :post %> - <%= link_to 'Down Vote', votes_path(post_id: post.id, up: false, outside_post: true), :method => :post %></li>
-<%end%>
+  <% @posts.each do |post| %>
+  <li class="actual_post">
+    <span class="arrows-number">
+      <%=link_to image_tag("arrowUp.png"), votes_path(post_id: post.id, up: true, outside_post: true), :method => :post %>
+      <%= post.points %>
+      <%=link_to post.title, subreddit_post_path(@subreddit, post)%>
+      <%=link_to image_tag("arrowDown.png"), votes_path(post_id: post.id, up: false, outside_post: true), :method => :post %>
+    </span>
+  </li>
+  <% end %>
 </ul>
+
+
 
 
 <% if session[:user_id] == @subreddit.moderator.id %>
