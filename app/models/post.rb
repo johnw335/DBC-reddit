@@ -12,10 +12,8 @@ class Post < ActiveRecord::Base
     up_votes - down_votes
   end
 
-  def self.search(search)
-    if search
-      where(body: "%#{search}%")
-    end
+  def self.search(query)
+    where("title like ? OR body like ?", "%#{query}%", "%#{query}%")
   end
 
 end
