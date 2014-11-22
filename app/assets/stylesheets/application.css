@@ -92,3 +92,16 @@ TO DO's
 li{
   list-style-type: none;
 }
+
+#container{
+  border: 1px black solid;
+  width: 80%;
+}
+
+#container a{
+  text-decoration: none;
+}
+
+.actual-post{
+  padding: 15px;
+}
