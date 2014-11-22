@@ -4,9 +4,14 @@ class PostsController < ApplicationController
   end
 
   def search
-    @search_results = Post.search(params[:search])
+    if params[:search]
+      @results = Post.search(params[:search]).order("created_at DESC")
+    end
     @subreddits = Subreddit.all
-    render 'subreddits/index'
+    # @search_results = Post.where(title: params[:search]) #"title ILIKE ?",
+    puts "====================================================" #"%#{params[:search]}%"
+    p @results
+    render :'subreddits/index'
   end
 
   def show
