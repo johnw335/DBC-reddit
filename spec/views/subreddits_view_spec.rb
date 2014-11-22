@@ -1,14 +1,18 @@
 require 'rails_helper'
 
 feature "creating subreddits" do
-  scenario "user can open new subreddit form" do
+  before do
+    User.create!(email: "test@gmail.com", username: "test", cohort: "Wolves", password: "catscats")
+  end
+  scenario "user can't open new subreddit without login in" do
     visit '/'
-    click_on 'Add New Subreddit'
-    expect(page).to have_text("Make a new Subreddit")
+    expect(page).to_not have_text("Add New Subreddit")
   end
 
   scenario "user can create a new subreddit" do
     visit '/'
+    fill_in 'email', :with => 'test@gmail.com'
+    fill_in 'password', :with => 'catscats'
     click_on 'Add New Subreddit'
     fill_in 'Name', :with => 'Rspec sucks'
     fill_in 'Description', :with => 'Rspec is kind of a jerk'
