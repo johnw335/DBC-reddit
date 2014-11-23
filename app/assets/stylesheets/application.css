@@ -200,6 +200,7 @@ li{
   padding-bottom: 30px;
   padding-left: 25px;
   font-family: verdana;
+  width: 70%;
 }
 
 .karma{
@@ -235,12 +236,13 @@ li{
 
 .subreddit-info{
   float: right;
-  margin-top: 2%;
-  margin-right: -15%;
+  margin-top: 5%;
+ /*position: relative;*/
+  margin-right: -20%;
   font-family:verdana;
   width: 20%;
 }
 .subreddit-info h1{
-  text-align: center;
+  text-align: left;
 }
 

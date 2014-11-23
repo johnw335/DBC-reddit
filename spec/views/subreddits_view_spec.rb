@@ -29,10 +29,10 @@ feature "User visits a subreddit" do
     @post = Post.create!(title: "colors", body: "let's talk about them",
                  author: @user,
                  subreddit: @subreddit)
-    @comment = Comment.create!(body: "I think colors are stupid", author: @user, post: @post)
+    @comment = Comment.create!(body: "I think colors are stupid", author: User.first, post: @post)
   end
 
-  scenario "sees a list of posts and can view them" do
+  scenario "sees a list of posts and can view them without logging in" do
     visit subreddit_path(@subreddit)
     expect(page).to have_text("color")
   end
@@ -57,6 +57,15 @@ feature "User can leave feedback on a post" do
                  author: @user,
                  subreddit: @subreddit)
     @comment = Comment.create!(body: "I think colors are stupid", author: @user, post: @post)
+  end
+
+  scenario "User must login to view the comment form" do
+    visit subreddit_post_path(@subreddit, @post)
+    fill_in 'email', :with => 'test@gmail.com'
+    fill_in 'password', :with => 'catscats'
+    click_on 'Login'
+    click_on "Leave a comment"
+    expect(page).to_not have_text("Body")
   end
 
   scenario "User can view the comment form" do
