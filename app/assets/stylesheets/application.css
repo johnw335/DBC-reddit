@@ -257,3 +257,11 @@ li{
   margin-left: 20%;
 
 }
+
+.reply-button a{
+  color: #888;
+  text-decoration: none;
+  font-family: verdana;
+  font-size: .7em;
+  margin-left: 2%;
+}
