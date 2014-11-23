@@ -9,7 +9,6 @@
   <%=@subreddit.description%>
 </p>
 
-<h3> Posts </h3>
 <ul>
   <% @posts.each do |post| %>
   <%= render partial: "shared/post", locals: { :post => post } %>
