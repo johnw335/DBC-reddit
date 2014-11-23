@@ -16,8 +16,8 @@ class CommentsController < ApplicationController
     parent_comment =  @comment.post == nil ? get_parent_comment(@comment) : @comment
 
     if @comment.save
-      # redirect_to subreddit_post_path(parent_comment.post.subreddit, parent_comment.post)
-      redirect_to(:back)
+      redirect_to subreddit_post_path(parent_comment.post.subreddit, parent_comment.post)
+      # redirect_to(:back)
     else
       # render 'comments/new'
       #@errer = "I'm just not going to leave that comment"

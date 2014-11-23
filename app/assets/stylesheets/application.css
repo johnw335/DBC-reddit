@@ -163,6 +163,7 @@ li{
   font-family: verdana;
   font-size: .9em;
   padding: 25px;
+  width: 75%;
 }
 
 .post-container img {
@@ -245,7 +246,14 @@ li{
 .subreddit-info h1{
   text-align: left;
 }
+
 .thumbnail img{
   width: 140px;
   height: auto;
+}
+.frontpage-info{
+  font-size: .6em;
+  color: #888;
+  margin-left: 20%;
+
 }
