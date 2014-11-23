@@ -1,13 +1,18 @@
 
 <!-- Renders a popup error if user tries to vote while not logged in. -->
 <%= render "shared/vote_error" %>
-
-<h1>Subreddit: <%=@subreddit.name%></h1>
-
-<h3> Description </h3>
-<p>
-  <%=@subreddit.description%>
-</p>
+<div class="subreddit-info">
+  <h1><%=@subreddit.name%></h1>
+  <!-- # if user is not subscribed, show subscribe button -->
+  <% @subscription = Subscription.find_by(user: User.find(session[:user_id]), subreddit: @subreddit) %>
+    <% if @subscription == nil %>
+     <%= button_to "Subscribe", subscriptions_path(subreddit: @subreddit), {class: "subscribe"} %> <%=@subreddit.subscriptions.count%> subscribers
+    <% else %>
+    <%= button_to "unsubscribe", subscription_path(@subscription),method: :delete%>
+    <% end %>
+  <h3>Description</h3>
+  <p><%= @subreddit.description %></p>
+</div>
 
 <ul>
   <% @posts.each do |post| %>

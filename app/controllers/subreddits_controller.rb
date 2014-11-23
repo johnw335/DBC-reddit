@@ -6,6 +6,7 @@ class SubredditsController < ApplicationController
 
   def show
     @subreddit = Subreddit.find(params[:id])
+    @subscriptions = Subscription.find_by(subreddit: @subreddit)
     @posts = @subreddit.posts.order('points DESC')
 
   end
