@@ -9,7 +9,7 @@
   </div>
     <span class="comment-body"><%= comment.body %></span>
     <br>
-    <%= link_to 'Leave a reply', new_subreddit_post_comment_path(post_id: params[:id], comment_id: comment.id) %>
+    <span class="reply-button"><%= link_to 'Leave a reply', new_subreddit_post_comment_path(post_id: params[:id], comment_id: comment.id) %> </span>
     <ul>
       <% comment.replies.order('points DESC').each do |comment| %>
         <%= render partial: "comments/show", locals: {comment: comment}%>
