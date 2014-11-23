@@ -12,11 +12,17 @@ class SubredditsController < ApplicationController
 
   def new
     @subreddit = Subreddit.new
+
   end
 
   def create
     @subreddit = Subreddit.new(subreddit_params)
-    @subreddit.moderator = User.find(session[:user_id])
+
+    # to do: add moderator using sessions id
+    @user = User.find(session[:user_id])
+    @subreddit.moderator = @user
+    @user.subscriptions.create(subreddit: @subreddit)
+
     if @subreddit.save
       redirect_to @subreddit
     else
