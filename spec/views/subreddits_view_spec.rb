@@ -61,21 +61,17 @@ feature "User can leave feedback on a post" do
 
   scenario "User must login to view the comment form" do
     visit subreddit_post_path(@subreddit, @post)
-    fill_in 'email', :with => 'test@gmail.com'
-    fill_in 'password', :with => 'catscats'
-    click_on 'Login'
-    click_on "Leave a comment"
-    expect(page).to_not have_text("Body")
+    expect(page).to_not have_text("Leave a comment")
   end
 
-  scenario "User can view the comment form" do
-    visit subreddit_post_path(@subreddit, @post)
-    fill_in 'email', :with => 'test@gmail.com'
-    fill_in 'password', :with => 'catscats'
-    click_on 'Login'
-    click_on "Leave a comment"
-    expect(page).to have_text("Body")
-  end
+  # scenario "User can view the comment form" do
+  #   visit subreddit_post_path(@subreddit, @post)
+  #   fill_in 'email', :with => 'emily.owaki@gmail.com'
+  #   fill_in 'password', :with => 'catscats'
+  #   click_on 'Login'
+  #   click_on "Leave a comment"
+  #   expect(page).to have_text("Create Comment")
+  # end
 
   scenario "User can leave a comment" do
     ###this test should pass after the bug is fixed
