@@ -9,7 +9,6 @@ class PostsController < ApplicationController
     end
     @subreddits = Subreddit.all
     # @search_results = Post.where(title: params[:search]) #"title ILIKE ?",
-    puts "====================================================" #"%#{params[:search]}%"
     p @results
     render :'subreddits/index'
   end
@@ -53,6 +52,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:author, :body, :title, :subreddit)
+      params.require(:post).permit(:author, :body, :title, :subreddit, :image_url)
     end
 end

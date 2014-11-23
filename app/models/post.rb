@@ -16,4 +16,7 @@ class Post < ActiveRecord::Base
     where("title like ? OR body like ?", "%#{query}%", "%#{query}%")
   end
 
+  def resize_image
+    self.image_url
+  end
 end
