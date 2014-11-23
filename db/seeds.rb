@@ -1,6 +1,6 @@
 require 'faker'
 
-10.times{User.create!(email: Faker::Internet.email,
+20.times{User.create!(email: Faker::Internet.email,
                       username: Faker::Name.name,
                       cohort: "Apricots 2015",
                       password: "password")}

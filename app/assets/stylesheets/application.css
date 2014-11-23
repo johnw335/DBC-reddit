@@ -162,6 +162,12 @@ li{
   position: relative;
   font-family: verdana;
   font-size: .9em;
+  padding: 25px;
+}
+
+.post-container img {
+  float: left;
+  margin-right: 20px;
 }
 
 .actual-post{
@@ -173,7 +179,7 @@ li{
 /*  position: relative;*/
   margin-left: 25px;
   margin-top: -80px;
-
+  padding-left: 25px;
 }
 .title-container-img a{
   margin-bottom: 40px;
@@ -192,6 +198,7 @@ li{
   margin-left: 25px;
   margin-top: -40px;
   padding-bottom: 30px;
+  padding-left: 25px;
   font-family: verdana;
 }
 
