@@ -9,7 +9,7 @@
 <body>
 <div id= "subreddit_list">
   <ul>
-    <li class="subreddit_name"><%= link_to 'MY SUBREDDITS', root_path %></li>
+    <li class="subreddit_name"><%= link_to 'ALL SUBREDDITS', subreddits_path %></li>
     <li class="subreddit_name" id="front"><%= link_to 'FRONT', root_path %></li>
     <%if session[:user_id] %>
       <%@user = User.find(session[:user_id])%>

@@ -216,4 +216,31 @@ li{
   width: 75%;
   font-family: verdana;
 }
+.subscribe{
+  background: green;
+    font-family: verdana;
+  color: white;
+}
+
+.subscribed{
+  font-family: verdana;
+  color: white;
+  background-color: #CF6165;
+}
+.subscribed:hover{
+  font-family: verdana;
+  color: white;
+  visibility: hidden;
+}
+
+.subreddit-info{
+  float: right;
+  margin-top: 2%;
+  margin-right: -15%;
+  font-family:verdana;
+  width: 20%;
+}
+.subreddit-info h1{
+  text-align: center;
+}
 
