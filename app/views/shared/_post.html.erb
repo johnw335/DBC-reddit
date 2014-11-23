@@ -10,13 +10,15 @@
       <span class="thumbnail"><img src=<%= post.image_url %>></span>
       <span class="title-with-image">
         <%=link_to post.title, subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%>
+
         <%=link_to post.subreddit.name, subreddit_path(post.subreddit)%>
       </span>
     </div>
   <% else %>
     <div class="title-container">
       <%=link_to post.title, subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%>
-      <%=link_to post.subreddit.name, subreddit_path(post.subreddit)%>
+      <br>
+      <span class="frontpage-info"><%=link_to post.subreddit.name, subreddit_path(post.subreddit)%></span>
     </div>
   <% end %>
 
