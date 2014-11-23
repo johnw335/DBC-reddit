@@ -202,5 +202,18 @@ li{
   font-family: verdana;
 }
 
+.karma{
+  float: right;
+  margin-top: 2%;
+  margin-right: -15%;
+  font-family:verdana;
+  border-bottom: 1px solid black;
+  width: 20%;
+}
 
+.user-posts{
+  float: left;
+  width: 75%;
+  font-family: verdana;
+}
 
