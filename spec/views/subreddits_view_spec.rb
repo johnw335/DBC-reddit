@@ -13,6 +13,7 @@ feature "creating subreddits" do
     visit '/'
     fill_in 'email', :with => 'test@gmail.com'
     fill_in 'password', :with => 'catscats'
+    click_on 'Login'
     click_on 'Add New Subreddit'
     fill_in 'Name', :with => 'Rspec sucks'
     fill_in 'Description', :with => 'Rspec is kind of a jerk'
@@ -60,6 +61,9 @@ feature "User can leave feedback on a post" do
 
   scenario "User can view the comment form" do
     visit subreddit_post_path(@subreddit, @post)
+    fill_in 'email', :with => 'test@gmail.com'
+    fill_in 'password', :with => 'catscats'
+    click_on 'Login'
     click_on "Leave a comment"
     expect(page).to have_text("Body")
   end
