@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   def create
+
     if params[:comment_id] != nil
       @comment = Comment.find(params[:comment_id])
     elsif params[:post_id] != nil
@@ -22,7 +23,7 @@ class VotesController < ApplicationController
 
     # if the vote is on a comment do this:
     elsif @comment
-      @vote = Vote.new(comment: @comment, up: params[:up])
+      @vote = Vote.create(comment: @comment, up: params[:up])
       @vote.voter = current_user
       if @vote.save
         @comment.update(points: @comment.points + 1)

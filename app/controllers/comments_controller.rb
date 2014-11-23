@@ -14,12 +14,15 @@ class CommentsController < ApplicationController
     end
     @comment.author = User.find(session[:user_id])
     parent_comment =  @comment.post == nil ? get_parent_comment(@comment) : @comment
+
     if @comment.save
-      redirect_to subreddit_post_path(parent_comment.post.subreddit, parent_comment.post)
+      # redirect_to subreddit_post_path(parent_comment.post.subreddit, parent_comment.post)
+      redirect_to(:back)
     else
       # render 'comments/new'
+      #@errer = "I'm just not going to leave that comment"
+      redirect_to(:back)
     end
-    redirect_to(:back)
   end
 
   def destroy
