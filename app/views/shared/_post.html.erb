@@ -7,7 +7,7 @@
 
   <% if post.image_url != nil %>
     <div class="title-container-img">
-      <img src=<%= post.image_url %>>
+      <span class="thumbnail"><img src=<%= post.image_url %>></span>
       <span class="title-with-image">
         <%=link_to post.title, subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%>
         <%=link_to post.subreddit.name, subreddit_path(post.subreddit)%>

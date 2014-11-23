@@ -245,4 +245,7 @@ li{
 .subreddit-info h1{
   text-align: left;
 }
-
+.thumbnail img{
+  width: 140px;
+  height: auto;
+}

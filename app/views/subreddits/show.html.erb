@@ -8,7 +8,7 @@
     <% if @subscription == nil %>
      <%= button_to "Subscribe", subscriptions_path(subreddit: @subreddit), {class: "subscribe"} %> <%=@subreddit.subscriptions.count%> subscribers
     <% else %>
-    <%= button_to "unsubscribe", subscription_path(@subscription),method: :delete%>
+    <%= button_to "unsubscribe", subscription_path(@subscription),method: :delete%> <%=@subreddit.subscriptions.count%> subscribers
     <% end %>
   <h3>Description</h3>
   <p><%= @subreddit.description %></p>
