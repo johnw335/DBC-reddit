@@ -4,7 +4,7 @@
 <div class="subreddit-info">
   <h1><%=@subreddit.name%></h1>
   <!-- # if user is not subscribed, show subscribe button -->
-  <% @subscription = Subscription.find_by(user: User.find(session[:user_id]), subreddit: @subreddit) %>
+  <% @subscription = Subscription.find_by(user: User.find(session[:user_id]), subreddit: @subreddit)  if session[:user_id]%>
     <% if @subscription == nil %>
      <%= button_to "Subscribe", subscriptions_path(subreddit: @subreddit), {class: "subscribe"} %> <%=@subreddit.subscriptions.count%> subscribers
     <% else %>
