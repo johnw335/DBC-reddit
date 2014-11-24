@@ -1,6 +1,6 @@
 <%= form_for [:subreddit, :post,  @comment] do |f| %>
   <br>
-  <%= f.text_field :body%>
+  <%= f.text_field :body, :placeholder => "leave your comment here"%>
   <%= f.hidden_field :comment_id, :value => params[:comment_id] %>
   <br>
   <%=f.submit%>
