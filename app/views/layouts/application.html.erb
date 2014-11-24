@@ -39,7 +39,7 @@
   want to join? <%= link_to "login", login_path %> or <%= link_to "register", new_user_path %> in seconds
   <% else %>
     <% @user = User.find(session[:user_id]) %>
-    <strong><%= @user.username %></strong> | <%= @user.cohort %> | <%= link_to "Logout", logout_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <strong><%= @user.username %></strong> | <%= @user.cohort %> | <%= link_to "Logout", logout_path, method: :delete, data: { confirm: 'Are you sure you want to logout?' } %>
   <%end%>
 </span>
   <br>
