@@ -52,11 +52,6 @@ Post.create!(title: "I hate rspec",
             body:"I can't get my rspec tests to pass. They are all red. Are there any gems to fix this?",
             author: User.all.sample,
             subreddit: rspec)
-Post.create!(title: "cats playing piano",
-            body:"<a href='http://giphy.com/search/keyboard-cat'>http://giphy.com/search/keyboard-cat</a>",
-            author: User.all.sample,
-            subreddit: gifs,
-            image_url: "http://giphy.com/search/keyboard-cat'>http://giphy.com/search/keyboard-cat")
 Post.create!(title: "What is a pirate's favorite test?",
             body:"ARspec",
             author: User.all.sample,
