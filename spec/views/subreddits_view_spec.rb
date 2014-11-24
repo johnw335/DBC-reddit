@@ -53,6 +53,7 @@ feature "User can leave feedback on a post" do
   before do
     @user = User.create!(email: "emily.owaki@gmail.com", cohort: "wolves", password: "catscats")
     @subreddit = Subreddit.create!(name: "yellow", moderator: @user, description: "blue")
+    @subscription = Subscription.create!(subreddit: @subreddit, user: @user)
     @post = Post.create!(title: "colors", body: "let's talk about them",
                  author: @user,
                  subreddit: @subreddit)
@@ -64,20 +65,36 @@ feature "User can leave feedback on a post" do
     expect(page).to_not have_text("Leave a comment")
   end
 
-  # scenario "User can view the comment form" do
-  #   visit subreddit_post_path(@subreddit, @post)
-  #   fill_in 'email', :with => 'emily.owaki@gmail.com'
-  #   fill_in 'password', :with => 'catscats'
-  #   click_on 'Login'
-  #   click_on "Leave a comment"
-  #   expect(page).to have_text("Create Comment")
-  # end
+  scenario "User can see leave a comment link" do
+    visit subreddit_post_path(@subreddit, @post)
+    fill_in 'email', :with => 'emily.owaki@gmail.com'
+    fill_in 'password', :with => 'catscats'
+    click_on 'Login'
+    click_on @subreddit.name.upcase
+    click_on @post.title
+    # click_on "Leave a comment"
+    expect(page).to have_content("Leave a comment")
+  end
+
+  scenario "User can click leave a comment" do
+    visit subreddit_post_path(@subreddit, @post)
+    fill_in 'email', :with => 'emily.owaki@gmail.com'
+    fill_in 'password', :with => 'catscats'
+    click_on 'Login'
+    click_on @subreddit.name.upcase
+    click_on @post.title
+    click_on 'Leave a comment'
+  end
 
   scenario "User can leave a comment" do
     ###this test should pass after the bug is fixed
     visit new_subreddit_post_comment_path(@subreddit, @post)
-    # visit '/subreddits/1/posts/1/comments/new'
-    fill_in 'Body', :with => 'Cats?'
+    fill_in 'email', :with => 'emily.owaki@gmail.com'
+    fill_in 'password', :with => 'catscats'
+    click_on 'Login'
+    click_on @subreddit.name.upcase
+    click_on @post.title
+    fill_in 'leave your comment here', :with => 'Cats?'
     click_on 'Create Comment'
     expect(page).to have_text('Cats?')
   end
@@ -92,6 +109,9 @@ feature "User can leave feedback on a post" do
 
   scenario "User can upvote a post" do
     visit subreddit_post_path(@subreddit, @post)
+    fill_in 'email', :with => 'emily.owaki@gmail.com'
+    fill_in 'password', :with => 'catscats'
+    click_on 'Login'
     first('Up Vote').click
     expect(page).to have_text("1")
   end
