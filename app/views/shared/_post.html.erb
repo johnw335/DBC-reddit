@@ -1,4 +1,4 @@
-<li class="actual-post">
+<div class="actual-post">
     <span class="arrows-number">
       <%=link_to image_tag("arrowUp.png"),votes_path(post_id: post.id, up: true, outside_post: true) , :method => :post %>
       <%= post.points %>
@@ -9,16 +9,27 @@
     <div class="title-container-img">
       <span class="thumbnail"><img src=<%= post.image_url %>></span>
       <span class="title-with-image">
-        <%=link_to post.title, subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%>
-
-        <%=link_to post.subreddit.name, subreddit_path(post.subreddit)%>
+        <%=link_to post.title, subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%><br>
+        <p>submitted <%= post.how_old %> ago by <%= post.author.username %> to 
+        <%=link_to post.subreddit.name, subreddit_path(post.subreddit)%> </p>
+        <p>
+        <%=link_to 'comment', subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%>
+        <%=link_to 'share', subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%>
+      </p>
       </span>
     </div>
   <% else %>
     <div class="title-container">
       <%=link_to post.title, subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%>
       <br>
-      <span class="frontpage-info"><%=link_to post.subreddit.name, subreddit_path(post.subreddit)%></span>
+      <p>submitted <%= post.how_old %> ago by <%= post.author.username %> to 
+        <%=link_to post.subreddit.name, subreddit_path(post.subreddit)%>
+      </p>
+      <p>
+        <%=link_to 'comment', subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%>
+        <%=link_to 'share', subreddit_post_path(:subreddit_id => post.subreddit.id, :id =>post.id)%>
+      </p>
     </div>
   <% end %>
+</div>
 

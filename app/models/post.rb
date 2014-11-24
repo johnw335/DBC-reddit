@@ -19,4 +19,14 @@ class Post < ActiveRecord::Base
   def resize_image
     self.image_url
   end
+
+  def how_old
+    minutes = ((Time.now - self.created_at)/60).floor
+    if minutes >= 60
+      hours = (minutes/60).floor
+      return "#{hours} #{'hour'.pluralize(hours)}"
+    else
+      return "#{minutes} #{'minute'.pluralize(minutes)}"
+    end
+  end
 end
