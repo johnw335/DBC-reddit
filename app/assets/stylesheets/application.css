@@ -177,6 +177,12 @@ li{
   height: 80px;
 }
 
+.actual-post p {
+  font-size: 0.8em;
+  font-family: verdana;
+  line-height: 80%;
+}
+
 .title-container-img{
 /*  position: relative;*/
   margin-left: 25px;
@@ -191,6 +197,7 @@ li{
 }
 .title-with-image{
   margin-left: 10px;
+  margin-top: -20px;
   float: left;
   padding-top: 20px;
   margin-bottom: -40px;
@@ -198,7 +205,7 @@ li{
 
 .title-container{
   margin-left: 25px;
-  margin-top: -40px;
+  margin-top: -60px;
   padding-bottom: 30px;
   padding-left: 25px;
   font-family: verdana;

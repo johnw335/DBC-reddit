@@ -17,7 +17,7 @@
 
 
 $(document).ready(function() {
-  $('.new-comment').click(function(e) {
+  $('.reply-button').click(function(e) {
     e.preventDefault();
     $('#new-comment-form').show()
   });
