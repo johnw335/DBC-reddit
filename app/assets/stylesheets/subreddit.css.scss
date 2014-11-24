@@ -2,3 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#subreddits_loggedin{
+  float:right;
+  padding-right: 30px;
+}
+
+  a.subreddit_loggedin_link:link {text-decoration: none;}
+  a.subreddit_loggedin_link:visited {text-decoration: none;}
+  a.subreddit_loggedin_link:hover {text-decoration: none;}
+
+

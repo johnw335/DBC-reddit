@@ -3,7 +3,14 @@
 
 <p>
   <% if session[:user_id]%>
-  <%= link_to "Add New Subreddit", new_subreddit_path %>
+    <%= link_to "Add New Subreddit", new_subreddit_path%>
+    <!--As a user, when I'm logged I should be able to see all subreddits available and click a subreddit to subscribe to it. -->
+    <div id="subreddits_loggedin">
+      <h3>All Subreddits</h3>
+        <%@subreddits.each do |subreddit| %>
+            <li><%= link_to subreddit.name, subreddit_path(subreddit), {:class => "subreddit_loggedin_link"} %></li>
+        <%end%>
+    </div>
   <% end %>
 </p>
 
